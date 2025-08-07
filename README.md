@@ -29,7 +29,7 @@ This project uses [`PlayStation-JoyInterface-ROS2`](https://github.com/HarvestX/
 Clone and initialize everything with:
 
 ```bash
-git clone <your_repo_url>.git
+git clone git@github.com:JonathanZHC/ps_joy_ws.git
 cd ps_joy_ws
 git submodule update --init --recursive
 ```
