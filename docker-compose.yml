@@ -1,0 +1,13 @@
+services:
+  launch_teleop:
+    build: .
+    network_mode: host        # DDS 直接和宿主机互通
+    privileged: true          # 自动把 /dev/input/* 和 /dev/hidraw* 映射进来
+    tty: true
+    # 如果想实时改源码可以把下面的 volume 打开
+    # volumes:
+    #   - ./src:/root/ps_joy_ws/src
+    environment:
+      ROS_DOMAIN_ID: 101
+    command: >
+      ros2 launch p9n_bringup teleop.launch.py
