@@ -1,26 +1,26 @@
-# ---------- 1 基础镜像 ----------
+# ---------- 1 Base Image ----------
 FROM ros:humble-ros-base  
-# 也可以换成 ros:foxy-ros-base
+# You can also use ros:foxy-ros-base
 
-# ---------- 2 系统依赖 ----------
+# ---------- 2 System Dependencies ----------
 RUN apt-get update && apt-get install -y \
     git python3-colcon-common-extensions \
     ros-humble-joy ros-humble-teleop-twist-joy \
  && rm -rf /var/lib/apt/lists/*
- 
-# ---------- 3 创建工作空间 ----------
+
+# ---------- 3 Create Workspace ----------
 ENV ROS_WS=/root/ps_joy_ws
 RUN mkdir -p $ROS_WS/src
-WORKDIR $ROS_WS 
-# 把源代码放进镜像（如果你用 docker build .，Docker 会自动把上下文拷进去）
+WORKDIR $ROS_WS
+# Copy source code into the image (if you use docker build ., Docker will automatically copy the context)
 COPY ./src ./src
 
-# ---------- 4 编译 ----------
+# ---------- 4 Build ----------
 RUN . /opt/ros/humble/setup.sh && \
     apt-get update && rosdep install -y --from-paths src --ignore-src && \
     colcon build --symlink-install
 
-# ---------- 5 运行环境 ----------
+# ---------- 5 Runtime Environment ----------
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

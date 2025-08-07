@@ -1,7 +1,5 @@
 # ps_joy_ws
 
-----
-
 ## Using Docker to Launch the Teleop Controller
 
 This project supports running the PlayStation joystick teleoperation controller enveloped inside a ROS 2 Humble Docker environment. Follow the instructions below to get started:
@@ -22,6 +20,18 @@ PlayStation-JoyInterface-ROS2/
 ├── Dockerfile
 ├── docker-compose.yml
 └── entrypoint.sh
+```
+
+### 0. Clone This Repository (with Submodule)
+
+This project uses [`PlayStation-JoyInterface-ROS2`](https://github.com/HarvestX/PlayStation-JoyInterface-ROS2) as a submodule.
+
+Clone and initialize everything with:
+
+```bash
+git clone <your_repo_url>.git
+cd ps_joy_ws
+git submodule update --init --recursive
 ```
 
 ### 1. Build the Docker Image

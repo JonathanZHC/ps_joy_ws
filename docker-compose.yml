@@ -1,10 +1,10 @@
 services:
   launch_teleop:
     build: .
-    network_mode: host        # DDS 直接和宿主机互通
-    privileged: true          # 自动把 /dev/input/* 和 /dev/hidraw* 映射进来
+    network_mode: host        # DDS directly uses host network
+    privileged: true          # Required for some hardware access
     tty: true
-    # 如果想实时改源码可以把下面的 volume 打开
+    # If you want to modify the source code in real-time, you can uncomment the volume section below
     # volumes:
     #   - ./src:/root/ps_joy_ws/src
     environment:
