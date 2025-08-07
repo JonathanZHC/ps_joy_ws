@@ -39,7 +39,7 @@ git submodule update --init --recursive
 From the project root:
 
 ```bash
-docker compose build --no-cache
+docker compose build
 ```
 
 ### 2. Launch the Teleop Node
@@ -47,7 +47,7 @@ docker compose build --no-cache
 Run the container:
 
 ```bash
-docker compose up
+docker compose up launch_teleop
 ```
 
 > **Note:** Make sure your host system is connected to the PlayStation controller and has access to `/dev/input/` and `/dev/hidraw*` devices. These are automatically shared with the container using `privileged: true`.
